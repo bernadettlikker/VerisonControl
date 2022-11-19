@@ -89,9 +89,24 @@ namespace BpLakaspiac
 
             }
 
+            xlSheet.get_Range(
+                        GetCell(2, 1),
+                        GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+
+            Excel.Range headerRange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
+            headerRange.Font.Bold = true;
+            headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            headerRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            headerRange.EntireColumn.AutoFit();
+            headerRange.RowHeight = 60;
+            headerRange.Interior.Color = Color.Salmon;
+            headerRange.BorderAround2(Excel.XlLineStyle.xlDashDotDot, Excel.XlBorderWeight.xlThick);
+
+            int lastRowID = xlSheet.UsedRange.Rows.Count;
+        }
 
 
-            void LoadData()
+        void LoadData()
             {
                 Flats = re.Flat.ToList();
             }
