@@ -12,9 +12,20 @@ namespace BpLakaspiac
 {
     public partial class Form1 : Form
     {
+        List<Flat> Flats;
+        RealEstateEntities context = new RealEstateEntities();
+
         public Form1()
         {
             InitializeComponent();
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            Flats = context.Flat.ToList();
+        }
+
+
     }
 }
