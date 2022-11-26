@@ -29,9 +29,9 @@ namespace MNB_arfolyamok
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chartRateData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -51,16 +51,16 @@ namespace MNB_arfolyamok
             // 
             // chartRateData
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chartRateData.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartRateData.Legends.Add(legend8);
+            chartArea9.Name = "ChartArea1";
+            this.chartRateData.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chartRateData.Legends.Add(legend9);
             this.chartRateData.Location = new System.Drawing.Point(378, 44);
             this.chartRateData.Name = "chartRateData";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chartRateData.Series.Add(series8);
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chartRateData.Series.Add(series9);
             this.chartRateData.Size = new System.Drawing.Size(546, 506);
             this.chartRateData.TabIndex = 1;
             this.chartRateData.Text = "chart1";
@@ -86,8 +86,6 @@ namespace MNB_arfolyamok
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "EUR"});
             this.comboBox1.Location = new System.Drawing.Point(378, 18);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);

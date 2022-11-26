@@ -17,16 +17,38 @@ namespace MNB_arfolyamok
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>(); //valutalista
 
         public Form1()
         {
             InitializeComponent();
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
 
             //GetRates();
-
+            GetCurrencies();
             RefreshData();
 
+        }
+
+        void GetCurrencies()
+        {
+            MNBArfolyamServiceSoapClient mcurr = new MNBArfolyamServiceSoapClient();
+            GetCurrenciesRequestBody request = new GetCurrenciesRequestBody(); //új példányt hoztunk létre
+            GetCurrenciesResponseBody response = mcurr.GetCurrencies(request);
+            string result = response.GetCurrenciesResult;
+            XmlDocument x = new XmlDocument();
+            x.LoadXml(result);
+            XmlElement item = x.DocumentElement;
+            int i = 0;
+            while (item.ChildNodes[0].ChildNodes[i] != null)
+            {
+                Currencies.Add(item.ChildNodes[0].ChildNodes[i].InnerText);
+                i++;
+
+            }
+
+            mcurr.Close();
         }
 
         private void RefreshData()
@@ -52,9 +74,13 @@ namespace MNB_arfolyamok
             xml.LoadXml(GetRates());
             foreach (XmlElement item in xml.DocumentElement) //végigmegy az xml minden elemén
             {
+                if (item.ChildNodes[0] ==null)
+                {
+                    continue;
+                }
                 RateData rd = new RateData();
                 Rates.Add(rd);
-                rd.Currency = item.ChildNodes[0].Attributes["curr"].Value; //childenodes-zal lejebb ugrik egyet
+                rd.Currency = item.ChildNodes[0].Attributes["curr"].Value; //childenodes-zal lejjebb ugrik egyet
                 rd.Date = Convert.ToDateTime(item.Attributes["date"].Value); //item date attribútúmát kiolvassa és konvertálja dátummá
                 decimal unit = Convert.ToDecimal(item.ChildNodes[0].Attributes["unit"].Value);
                 decimal value = Convert.ToDecimal(item.ChildNodes[0].InnerText);
