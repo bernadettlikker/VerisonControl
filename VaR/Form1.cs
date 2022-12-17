@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,24 +25,36 @@ namespace VaR
             dataGridView1.DataSource = ticks;
             CreatePortfolio();
 
-            List<decimal> Nyereségek = new List<decimal>();
+            List<decimal> Nyeresegek = new List<decimal>();
             int intervalum = 30;
-            DateTime kezdőDátum = (from x in ticks select x.TradingDay).Min();
-            DateTime záróDátum = new DateTime(2016, 12, 30);
-            TimeSpan z = záróDátum - kezdőDátum;
+            DateTime kezdoDatum = (from x in ticks select x.TradingDay).Min();
+            DateTime zaroDatum = new DateTime(2016, 12, 30);
+            TimeSpan z = zaroDatum - kezdoDatum;
             for (int i = 0; i < z.Days - intervalum; i++)
             {
-                decimal ny = GetPortfolioValue(kezdőDátum.AddDays(i + intervalum))
-                           - GetPortfolioValue(kezdőDátum.AddDays(i));
-                Nyereségek.Add(ny);
+                decimal ny = GetPortfolioValue(kezdoDatum.AddDays(i + intervalum))
+                           - GetPortfolioValue(kezdoDatum.AddDays(i));
+                Nyeresegek.Add(ny);
                 Console.WriteLine(i + " " + ny);
             }
 
-            var nyereségekRendezve = (from x in Nyereségek
+            var nyereségekRendezve = (from x in Nyeresegek
                                       orderby x
                                       select x)
                                         .ToList();
-            MessageBox.Show(nyereségekRendezve[nyereségekRendezve.Count() / 5].ToString());
+            //MessageBox.Show(nyereségekRendezve[nyeresegekRendezve.Count() / 5].ToString());
+
+            SaveFileDialog sfv = new SaveFileDialog();
+            sfv.ShowDialog();
+            using (StreamWriter sw = new StreamWriter(sfv.FileName))
+            {
+                sw.WriteLine("Időszak" + " " + "Nyereség");
+                for (int i = 0; i < Nyeresegek.Count; i++)
+                {
+                    sw.WriteLine(i.ToString() + " " + Nyeresegek[i].ToString());
+                }
+            }
+
         }
 
 
