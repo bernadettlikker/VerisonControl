@@ -38,9 +38,9 @@ namespace VaR
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(298, 80);
+            this.dataGridView1.Location = new System.Drawing.Point(298, 22);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(395, 202);
+            this.dataGridView1.Size = new System.Drawing.Size(490, 260);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
