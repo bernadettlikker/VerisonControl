@@ -17,6 +17,7 @@ namespace VaR
         List<Tick> ticks;
         PortfolioEntities context = new PortfolioEntities();
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
+        List<decimal> Nyeresegek = new List<decimal>();
 
         public Form1()
         {
@@ -24,8 +25,9 @@ namespace VaR
             ticks = context.Ticks.ToList();
             dataGridView1.DataSource = ticks;
             CreatePortfolio();
+            
 
-            List<decimal> Nyeresegek = new List<decimal>();
+
             int intervalum = 30;
             DateTime kezdoDatum = (from x in ticks select x.TradingDay).Min();
             DateTime zaroDatum = new DateTime(2016, 12, 30);
@@ -44,6 +46,12 @@ namespace VaR
                                         .ToList();
             //MessageBox.Show(nyereségekRendezve[nyeresegekRendezve.Count() / 5].ToString());
 
+            
+
+        }
+
+        private void Mentes()
+        {
             SaveFileDialog sfv = new SaveFileDialog();
             sfv.ShowDialog();
             using (StreamWriter sw = new StreamWriter(sfv.FileName))
@@ -54,10 +62,7 @@ namespace VaR
                     sw.WriteLine(i.ToString() + " " + Nyeresegek[i].ToString());
                 }
             }
-
         }
-
-
 
         private void CreatePortfolio()
         {
@@ -83,5 +88,9 @@ namespace VaR
             return value;
         }
 
+        private void btnmentes_Click(object sender, EventArgs e)
+        {
+            Mentes();
+        }
     }
 }

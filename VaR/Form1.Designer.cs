@@ -31,6 +31,7 @@ namespace VaR
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnmentes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -38,24 +39,35 @@ namespace VaR
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(298, 22);
+            this.dataGridView1.Location = new System.Drawing.Point(249, 22);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(490, 260);
+            this.dataGridView1.Size = new System.Drawing.Size(539, 260);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(434, 288);
+            this.dataGridView2.Location = new System.Drawing.Point(415, 288);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(240, 150);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // btnmentes
+            // 
+            this.btnmentes.Location = new System.Drawing.Point(79, 336);
+            this.btnmentes.Name = "btnmentes";
+            this.btnmentes.Size = new System.Drawing.Size(75, 23);
+            this.btnmentes.TabIndex = 2;
+            this.btnmentes.Text = "Mentés";
+            this.btnmentes.UseVisualStyleBackColor = true;
+            this.btnmentes.Click += new System.EventHandler(this.btnmentes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnmentes);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
@@ -70,6 +82,7 @@ namespace VaR
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnmentes;
     }
 }
 
